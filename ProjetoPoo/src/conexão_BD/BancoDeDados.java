@@ -11,7 +11,7 @@ public class BancoDeDados {
 	private Statement statement = null;
 	private ResultSet resultset = null;
 	
-	public void Conectar() {
+	public void conectar() {
 		String servidor = "jdbc:mysql://localhost:3306/loja";
 		String usuario = "root";
 		String senha = "99180116";
@@ -60,17 +60,22 @@ public class BancoDeDados {
 				System.out.println("Erro: " + e.getMessage());
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		public void apagarProduto(String id_produto) {
+			try {
+				String query = "DELETE FROM produto WHERE id_produto = " + id_produto + ";";
+				this.statement.executeUpdate(query);
+			}catch(Exception e) {
+				System.out.println("Erro: " + e.getMessage());
+			}
+			
+		}
+		public void Desconectar () {
+			try {
+				this.connection.close();
+			}catch (Exception e) {
+				System.out.println("Erro: " + e.getMessage());
+			}
+		}
 		
 		
 		
